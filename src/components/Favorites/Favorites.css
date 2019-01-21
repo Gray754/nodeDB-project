@@ -1,0 +1,74 @@
+.favs{
+    padding-top: 20px;
+    text-transform: capitalize;
+}
+
+.fav-bar{
+    display: flex;
+    margin: auto;
+    width: 40vw;
+    height: 20vh;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    overflow: scroll;
+}
+
+.favs button{
+    background: none;
+    border: none;
+    border-radius: 9999em;
+    padding: 5px;
+    cursor: pointer;
+    font-size: .8em;
+    color: #DE6329;
+    text-align: center;
+}
+
+.favs button:focus{
+    outline: none;
+}
+
+.favs button:hover{
+    color: #505050;
+}
+
+.fav-bar h5{
+    padding: 0px 20px;
+    font-size: 1em;
+}
+
+ .saved{
+     padding: 20px 0px;
+ }
+
+ .favbtns{
+     display: flex;
+     margin: auto;
+     width: 30vw;
+     justify-content: space-between;
+ }
+
+ .editClick{
+     display: block;
+     text-align: center;
+     margin: auto;
+ }
+
+ .inputField input{
+     border: none;
+     background: none;
+     border-bottom: 1px solid black;
+     width: 10vw;
+     transition: font-size .7s ease-out;
+ }
+
+ .inputField{
+     display: flex;
+     flex-direction: column;
+     justify-content: space-arounds;
+ }
+
+ .inputField input:focus{
+     outline: none;
+     font-size: 1.3em;
+ }

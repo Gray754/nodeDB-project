@@ -3,7 +3,6 @@ let baseUrl = 'https://api.openweathermap.org/data/2.5/'
 let city = 'dallas'
 let savedLoc = []
 let {API_KEY} = process.env
-console.log(API_KEY)
 
 const getWeather = (req, res) =>{
 console.log(process.env)
@@ -27,9 +26,23 @@ const nameOfCity=(req, res)=>{
 }
 
 const savedWeather=(req, res)=>{
-        savedLoc.push(req.body.locUpdate)
-        res.status(200).json(savedLoc)
-    }
+    savedLoc.push(req.body.locUpdate)
+    res.status(200).json(savedLoc)
+}
+
+const clearSaved=(req, res)=>{
+    savedLoc.splice(0, savedLoc.length)
+    res.status(200).json(savedLoc)
+}
+
+const editHead=(req,res)=>{
+    let {id} = req.params
+    let {inputVal} = req.body
+    // console.log(id, inputVal)
+    savedLoc[id].description = inputVal
+    // console.log(savedLoc[id])
+    res.status(200).json(savedLoc)
+}
 
 // const getTemp=(req, res)=>{
 //     axios.get(`${baseUrl}/weather?q=${city}&units=imperial${key}`).then(response=>{
@@ -48,7 +61,9 @@ module.exports = {
     getWeather,
     updateLocation,
     nameOfCity,
-    savedWeather
+    savedWeather,
+    clearSaved,
+    editHead
     //updateCity
     // same as 
     // getWeather: getWeather

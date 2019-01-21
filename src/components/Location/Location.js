@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Weather from '../Weather/Weather';
+import Favorites from '../Favorites/Favorites'
 import './Location.css'
 
 
@@ -14,8 +15,9 @@ class Location extends Component{
             locUpdate: '',
             weather: [],
             favorites: [],
-            favs: []
-        }
+            favs: [],
+        } 
+        this.editText = this.editText.bind(this)
     }
     
     componentDidMount(){
@@ -35,6 +37,10 @@ class Location extends Component{
         this.setState({location:e})
     }
 
+    editInput=(e)=>{
+        this.setState({inputVal:e})
+    }
+
     getMoreWeather=()=>{
         axios.post('/api/weather/location', {location: this.state.location}).then(response=>{
             this.setState({locUpdate:response.data})
@@ -51,8 +57,21 @@ class Location extends Component{
         }).catch(err=>console.log(err))
     }
 
-    render(){}
-        // console.log(this.state.favs)
+    clearFavs=()=>{
+        axios.delete('/api/weather/saved').then(response=>{
+            this.setState({favs:response.data})
+        }).catch(err=>console.log(err))
+    }
+
+    editText=(i)=>{
+        console.log(i, this.state.inputVal)
+        axios.put(`/api/saved/edit/${i}`, {inputVal:this.state.inputVal}).then(response=>{
+            this.setState({favs:response.data})
+        }).catch(err=>console.log(err))
+    }
+
+    render(){
+        console.log(this.state.favs)
         let {locUpdate, currentLoc, favs} = this.state
         
         return(
@@ -70,12 +89,14 @@ class Location extends Component{
                          description={locUpdate.description} 
                          locUpdate={this.locUpdate}/>
                 </div>
-                {/* <button onClick={this.addFavs}>Add to Favorites</button>
-                {favs.map((e, i) => {
-                    return(
-                        <div key={i}><h5>{e.description}</h5></div>
-                    )
-                })} */}
+                <Favorites favs={favs} 
+                           addFavs={this.addFavs} 
+                           locUpdate={locUpdate} 
+                           icon={locUpdate.icon} 
+                           clearFavs={this.clearFavs} 
+                           inputVal={this.inputVal} 
+                           editText={this.editText} 
+                           editInput={this.editInput}/>
             </div>
          )
     }
