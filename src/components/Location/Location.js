@@ -51,7 +51,7 @@ class Location extends Component{
         }).catch(err=>console.log(err))
     }
 
-    render(){
+    render(){}
         // console.log(this.state.favs)
         let {locUpdate, currentLoc, favs} = this.state
         
