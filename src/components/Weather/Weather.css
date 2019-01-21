@@ -1,0 +1,27 @@
+.weather{
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 15px;
+}
+
+
+
+.weather img{
+    width: 80px;
+    margin: auto;
+}
+
+.weather h3{
+    font-size: 1.4em;
+    font-weight: 300;
+}
+
+
+
+/* .imgFlex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
