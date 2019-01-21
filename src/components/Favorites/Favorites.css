@@ -33,7 +33,7 @@
 }
 
 .fav-bar h5{
-    padding: 0px 20px;
+    padding: 5px 30px;
     font-size: 1em;
 }
 
@@ -58,7 +58,7 @@
      border: none;
      background: none;
      border-bottom: 1px solid black;
-     width: 10vw;
+     width: 8vw;
      transition: font-size .7s ease-out;
  }
 
